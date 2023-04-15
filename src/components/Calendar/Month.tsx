@@ -1,16 +1,17 @@
 import { months } from "@/utils/months";
 
-/* create a react component called "Month" that render every day number of the month in a div, the number of the day in every month are in month.days inside of every element in months object */
+/* if i have a number for example 31, create an array from 1 to that number (31), map every number in that array and create a div with the number inside */
+
 const Month = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
       {months.map((month) => (
-        <div className="flex flex-col items-center justify-center w-full h-full">
+        <div key={month.name} className="flex flex-col items-center justify-center w-full h-full">
           <h1 className="text-4xl font-bold">{month.name}</h1>
           <div className="flex flex-row items-center justify-center w-full h-full">
-            {month.days.map((day) => (
-              <div className="flex flex-col items-center justify-center w-16 h-16">
-                <h1 className="text-2xl font-bold">{day}</h1>
+            {Array.from(Array(month.days).keys()).map((day, index) => (
+              <div key={index} className="flex flex-col items-center justify-center w-16 h-16">
+                <h1 className="text-2xl font-bold">{day + 1}</h1>
               </div>
             ))}
           </div>
